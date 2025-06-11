@@ -28,5 +28,8 @@ class Campeonato(models.Model):
     
 class CampeonatoEquipos(models.Model):
     anio = models.IntegerField()
-    campeonato = models.ForeignKey(Campeonato, related_name='campeonatoequipos', on_delete=models.CASCADE)
-    equipo = models.ForeignKey(Equipo, related_name='campeonatoequipos', on_delete=models.CASCADE)
+    campeonato = models.ForeignKey(Campeonato, related_name='campeonatosequipos', on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, related_name='campeonatosequipos', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%d - %s - %s" % (self.anio, self.campeonato.nombre, self.equipo.nombre)
